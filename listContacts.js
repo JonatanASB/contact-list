@@ -1,36 +1,56 @@
 
-var listaContactos = [];
-var listaContactos = {
-    id: "",
-    nombres: "",
-    apellidos: "",
-    telefono: "",
-    ubicaciones: {
-        ciudad: "",
-        direccion: ""
+const listaContactos = [
+    { 
+        id: 1,
+        nombre: "Juan",
+        apellido: "Lopez",
+        telefono: 123456,
+        ubicaciones: {
+            ciudad: "Apartado",
+            direccion: "Cr12"
     }
-};
+    },
+    {
+        id: 2,
+        nombre: "Ana",
+        apellido: "Perez",
+        telefono: 789456,
+        ubicaciones: {
+            ciudad: "Carepa",
+            direccion: "barrio Obrero"
+        }
+    }
+];
 
 function añadirContacto() {
     let id = prompt("Ingresa tu Id: ");
     let nombre = prompt("Ingresa tu nombre: ");
-    let apellidos = prompt("Ingresa los apellidos: ");
-    let telefono = prompt("Ingresa tu telefono");
-    let ciudad = prompt("Ingresa la ciudad");
-    let direccion = prompt("Ingresa la direccion: ");
+    let apellido = prompt("Ingresa los apellidos: ");
+    let telefono = prompt("Ingresa tu telefono: ");
+    let ciudad = prompt("Ingresa tu ciudad: ");
+    let direccion = prompt("Ingresa tu direccion: ");
 
-    listaContactos.push(id);
-    listaContactos.push(nombre);
-    listaContactos.push(apellidos);
-    listaContactos.push(telefono);
-    listaContactos.ubicaciones.push(ciudad);
-    listaContactos.ubicaciones.push(direccion);
+    const lista = {
+        id: id,
+        nombre: nombre,
+        apellido: apellido,
+        telefono: telefono,
+        ciudad: ciudad,
+        direccion: direccion
+    }
+
+    listaContactos.push(lista);
 }
 
-function mostarLista() {
-    let lista = listaContactos.join("  -  ");
-    console.log(lista);
+function mostrarLista() {
+    for(let lista in listaContactos) {
+        console.log("--------------------");
+        console.log(lista, listaContactos[lista]);
+    }
 }
-function eliminarContacto(){
-    return listaContactos.pop();
+
+const eliminarContacto = (contacto) => {
+   let id = listaContactos.findIndex(itr => itr == contacto);
+   listaContactos.splice(id,1);
+   console.log("Contacto eliminado");
 }
