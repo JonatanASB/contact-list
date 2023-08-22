@@ -1,6 +1,6 @@
 
 const listaContactos = [
-    { 
+    {
         id: 1,
         nombre: "Juan",
         apellido: "Lopez",
@@ -8,7 +8,7 @@ const listaContactos = [
         ubicaciones: {
             ciudad: "Apartado",
             direccion: "Cr12"
-    }
+        }
     },
     {
         id: 2,
@@ -43,14 +43,16 @@ function añadirContacto() {
 }
 
 function mostrarLista() {
-    for(let lista in listaContactos) {
+    for (let lista of  listaContactos) {
         console.log("--------------------");
         console.log(lista, listaContactos[lista]);
     }
 }
 
-const eliminarContacto = (contacto) => {
-   let id = listaContactos.findIndex(itr => itr == contacto);
-   listaContactos.splice(id,1);
-   console.log("Contacto eliminado");
+const eliminarContacto = () => {
+    let id = prompt("Ingresa el id a eliminar: "); 
+    let eliminarContacto = id;
+     let index = listaContactos.findIndex(itr => itr.id == eliminarContacto);
+    listaContactos.splice(index, 1);
+    console.log("Contacto eliminado");
 }
